@@ -1,15 +1,23 @@
 <script>
+  import { tabIndex } from "./stores.js";
   import refreshPic from "$lib/images/arrows-rotate-solid.svg";
 
   export let items = [];
-  export let activeTabValue = 1;
 
-  const handleClick = (tabValue) => () => (activeTabValue = tabValue);
+  let activeTabValue = 1;
+
+  tabIndex.subscribe((value) => {
+    activeTabValue = value;
+  });
+
+  function backToStart() {
+    tabIndex.set(1);
+  }
 </script>
 
 <div class="container-fluid">
   <div class="row mt-5">
-    <div class="col align-self-center m-0 p-0 justify-content-center">
+    <div class="col align-self-center m-0 p-1 justify-content-center">
       <div class="card mx-auto" style="max-width: 1000px">
         <div class="card-header">
           <div class="row">
@@ -28,6 +36,7 @@
                 id="refreshDecision"
                 type="button"
                 aria-label="refresh"
+                on:click={() => backToStart()}
               >
                 <img src={refreshPic} alt="refresh" style="height: 1.2rem" />
               </button>

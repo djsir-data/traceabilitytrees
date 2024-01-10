@@ -2,6 +2,8 @@
   import Tabs from "./Tabs.svelte";
   import TabStart from "./TabStart.svelte";
   import TabExistingSys from "./TabExistingSys.svelte";
+  import TabExitFindMore from "./TabExitFindMore.svelte";
+  import TabBenefits from "./TabBenefits.svelte";
 
   const items = [
     {
@@ -11,6 +13,14 @@
     {
       value: 2,
       component: TabExistingSys,
+    },
+    {
+      value: 3,
+      component: TabExitFindMore,
+    },
+    {
+      value: 4,
+      component: TabBenefits,
     },
   ];
 </script>

@@ -5,7 +5,7 @@
 
 <div class="container-fluid">
   <div class="row">
-    <div class="col align-self-center m-0 p-0 justify-content-center">
+    <div class="col align-self-center m-0 p-1 justify-content-center">
       <div class="card mx-auto" style="max-width: 600px">
         <div class="card-header">
           <div class="row">
