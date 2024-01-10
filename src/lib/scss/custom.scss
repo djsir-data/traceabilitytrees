@@ -1,0 +1,82 @@
+// Custom.scss
+
+// 0.  fonts
+@font-face {
+  font-family: "VIC-Regular";
+  font-style: normal;
+  src: url("../fonts/VIC-Regular.eot");
+  src:
+    url("../fonts/VIC-Regular-iefix.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/VIC-Regular.woff2") format("woff2"),
+    url("../fonts/VIC-Regular.woff") format("woff"),
+    url("../fonts/VIC-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "VIC-SemiBold";
+  font-style: normal;
+  src: url("../fonts/VIC-SemiBold.eot");
+  src:
+    url("../fonts/VIC-SemiBold-iefix.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/VIC-SemiBold.woff2") format("woff2"),
+    url("../fonts/VIC-SemiBold.woff") format("woff"),
+    url("../fonts/VIC-Regular.ttf") format("truetype");
+}
+
+// @font-face {
+//   font-family: "VIC-Bold";
+//   font-style: normal;
+//   src: url("../fonts/VIC-Bold.eot");
+//   src: url("../fonts/VIC-Bold-iefix.eot?#iefix") format("embedded-opentype"),
+//     url("../fonts/VIC-Bold.woff2") format("woff2"),
+//     url("../fonts/VIC-Bold.woff") format("woff"),
+//     url("../fonts/VIC-Bold.ttf") format("truetype");
+// }
+
+// 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
+@import "~bootstrap/scss/_functions.scss";
+
+// 2. Include any default variable overrides here
+$primary: #00573f;
+$secondary: #e3edeb;
+$headings-font-family: VIC-SemiBold;
+$font-family-sans-serif: VIC-Regular;
+$component-active-bg: $primary;
+
+// 3. Include remainder of required Bootstrap stylesheets
+@import "~bootstrap/scss/_variables.scss";
+@import "~bootstrap/scss/_variables-dark.scss";
+
+// 4. Include any default map overrides here
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+);
+
+$colors: (
+  "black": $black,
+  "white": $white,
+);
+
+// 5. Include remainder of required parts
+@import "~bootstrap/scss/_maps.scss";
+@import "~bootstrap/scss/_mixins.scss";
+@import "~bootstrap/scss/_root.scss";
+
+// 6. Optionally include any other parts as needed
+@import "~bootstrap/scss/_reboot.scss";
+@import "~bootstrap/scss/_type.scss";
+@import "~bootstrap/scss/_containers.scss";
+@import "~bootstrap/scss/_grid.scss";
+@import "~bootstrap/scss/_buttons.scss";
+@import "~bootstrap/scss/_tables.scss";
+@import "~bootstrap/scss/_forms.scss";
+@import "~bootstrap/scss/_helpers.scss";
+@import "~bootstrap/scss/_nav.scss";
+@import "~bootstrap/scss/_navbar.scss";
+@import "~bootstrap/scss/_progress.scss";
+@import "~bootstrap/scss/_transitions.scss";
+@import "~bootstrap/scss/_card.scss";
+@import "~bootstrap/scss/_modal.scss";
+@import "~bootstrap/scss/_utilities.scss";
+@import "~bootstrap/scss/utilities/_api.scss";
