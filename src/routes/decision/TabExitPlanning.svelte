@@ -1,8 +1,8 @@
 <div class="card-body">
   <p>
     If you have identified that you need more from your traceability system,
-    then now is a good time to complete the <a href="/planning"
-      >Traceability Planning Tool</a
+    then now is a good time to complete the <a
+      href="/traceabilitytrees/planning">Traceability Planning Tool</a
     >.
   </p>
   <p>
@@ -24,6 +24,8 @@
     your business partners, domestic regulations and international requirements.
   </p>
   <p>
-    Get started now and <a href="/planning">make your plan for traceability</a>.
+    Get started now and <a href="/traceabilitytrees/planning"
+      >make your plan for traceability</a
+    >.
   </p>
 </div>
