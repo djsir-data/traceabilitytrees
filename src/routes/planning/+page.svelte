@@ -1,3 +1,7 @@
+<script>
+  import refreshPic from "$lib/images/arrows-rotate-solid.svg";
+</script>
+
 <svelte:head>
   <title>Traceability Planning Tool</title>
   <meta name="planning" content="Traceability Planning Tool" />
@@ -24,11 +28,7 @@
                 type="button"
                 aria-label="refresh"
               >
-                <img
-                  src="../src/images/arrows-rotate-solid.svg"
-                  alt="refresh"
-                  style="height: 1.2rem"
-                />
+                <img src={refreshPic} alt="refresh" style="height: 1.2rem" />
               </button>
             </div>
           </div>
