@@ -34,7 +34,7 @@
             that can guide you on the next steps of your traceability journey.
           </p>
         </div>
-        <a class="card-footer text-end" href="/traceabilitytrees/decision">
+        <a class="card-footer text-end" href="/decision">
           Start decision tree →</a
         >
       </div>
@@ -66,7 +66,7 @@
             international requirements.
           </p>
         </div>
-        <a class="card-footer text-end" href="/traceabilitytrees/planning">
+        <a class="card-footer text-end" href="/planning">
           Start planning tool →</a
         >
       </div>

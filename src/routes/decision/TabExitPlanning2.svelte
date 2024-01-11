@@ -2,9 +2,7 @@
   <p>
     If you have identified that you need a traceability system that can provide
     quick and connected information along your supply chain, then now is a good
-    time to complete the <a href="/traceabilitytrees/planning"
-      >Traceability Planning Tool</a
-    >.
+    time to complete the <a href="/planning">Traceability Planning Tool</a>.
   </p>
   <p>
     The Traceability Planning Tool is a series of questions that, once
@@ -25,8 +23,6 @@
     your business partners, domestic regulations and international requirements.
   </p>
   <p>
-    Get started now and <a href="/traceabilitytrees/planning"
-      >make your plan for traceability</a
-    >.
+    Get started now and <a href="/planning">make your plan for traceability</a>.
   </p>
 </div>
