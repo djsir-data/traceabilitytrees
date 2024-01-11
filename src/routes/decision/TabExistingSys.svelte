@@ -30,7 +30,7 @@
     <button
       class="btn btn-primary"
       style="width: 50%"
-      on:click={() => toExit()}
+      on:click={() => toNextQuestion()}
     >
       Yes
     </button>
@@ -39,7 +39,7 @@
     <button
       class="btn btn-primary"
       style="width: 50%"
-      on:click={() => toNextQuestion()}
+      on:click={() => toExit()}
     >
       No
     </button>

@@ -18,7 +18,10 @@
 <div class="container-fluid">
   <div class="row mt-5">
     <div class="col align-self-center m-0 p-1 justify-content-center">
-      <div class="card mx-auto" style="max-width: 1000px">
+      <div
+        class="card mx-auto"
+        style="max-width: 1000px; transition: height 1s;"
+      >
         <div class="card-header">
           <div class="row">
             <div class="col">
