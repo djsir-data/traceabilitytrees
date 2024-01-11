@@ -1,6 +1,5 @@
 <script>
   import "../lib/scss/custom.scss";
-  export const prerender = true;
 </script>
 
 <div class="app">
