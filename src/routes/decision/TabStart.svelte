@@ -28,9 +28,9 @@
 
 <div class="card-body bg-primary mt-3" style="--bs-bg-opacity: .15;">
   <p>
-    There are many ways that a traceability system can benefit your business.
-    The main benefits are summarised here and now is a good time to consider the
-    ways that a traceability system can help you make business gains.
+    There are many ways that a traceability system can benefit your business and
+    now is a good time to consider the ways that a traceability system can help
+    you make business gains.
   </p>
   <h4 class="mb-0">
     Q1. What benefits of traceability are important for your business?
