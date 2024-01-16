@@ -1,11 +1,33 @@
 <script>
-  import { tabIndex } from "./stores.js";
+  import { tabIndex, q5 } from "./stores.js";
+
+  let tableContent = [];
+  q5.subscribe((value) => {
+    tableContent = value;
+  });
 
   function nextTab() {
+    collectResults();
     tabIndex.set(6);
+    document.body.scrollIntoView();
   }
   function previousTab() {
+    collectResults();
     tabIndex.set(4);
+    document.body.scrollIntoView();
+  }
+  function collectResults() {
+    q5.set(tableContent);
+  }
+  function addRow() {
+    tableContent.push({
+      purpose: null,
+      data: null,
+      source: null,
+      visibility: null,
+      example: false,
+    });
+    tableContent = tableContent;
   }
 </script>
 
@@ -58,13 +80,13 @@ Consider the:
     <span class="display-6" style="font-size: 1.2rem">Accessibility needs</span>
   </div>
   <div class="col" style="max-width: max-content">
-    <button class="btn btn-outline-primary" id="accessNeedsNewRow">
+    <button class="btn btn-outline-primary" on:click={addRow}>
       + Add row
     </button>
   </div>
 </div>
 <div class="table-responsive">
-  <table class="table table-striped" id="accessNeeds">
+  <table class="table table-striped">
     <thead>
       <tr>
         <th scope="col">Purpose</th>
@@ -76,81 +98,58 @@ Consider the:
       </tr>
     </thead>
     <tbody>
-      <tr class="extras">
-        <td>
-          <span class="text-muted">E.g. Food safety</span>
-        </td>
-        <td>
-          <span class="text-muted">Batch numbers</span>
-        </td>
-        <td>
-          <span class="text-muted">Packing sheets</span>
-        </td>
-        <td>
-          <span class="text-muted">Farm, food transformation, retailer</span>
-        </td>
-      </tr>
-      <tr class="extras">
-        <td>
-          <span class="text-muted">E.g. Market access</span>
-        </td>
-        <td>
-          <span class="text-muted">Maximum residue limits (MRLs)</span>
-        </td>
-        <td>
-          <span class="text-muted">Spray diary</span>
-        </td>
-        <td>
-          <span class="text-muted"
-            >Farm, food transformation, distribution / freight forwarder and
-            exporter</span
-          >
-        </td>
-      </tr>
-      <tr class="extras">
-        <td>
-          <span class="text-muted">E.g. Provenance</span>
-        </td>
-        <td>
-          <span class="text-muted">Growing location</span>
-        </td>
-        <td>
-          <span class="text-muted">QA records</span>
-        </td>
-        <td>
-          <span class="text-muted"
-            >Farm, food transformation, market, retailer, consumer</span
-          >
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <input type="text" placeholder="Purpose" class="form-control" />
-        </td>
-        <td>
-          <input type="text" placeholder="What data" class="form-control" />
-        </td>
-        <td>
-          <input type="text" placeholder="Data source" class="form-control" />
-        </td>
-        <td>
-          <textarea class="form-control" style="min-width: 15rem"></textarea>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <input type="text" placeholder="Purpose" class="form-control" />
-        </td>
-        <td>
-          <input type="text" placeholder="What data" class="form-control" />
-        </td>
-        <td>
-          <input type="text" placeholder="Data source" class="form-control" />
-        </td>
-        <td>
-          <textarea class="form-control" style="min-width: 15rem"></textarea>
-        </td>
-      </tr>
+      {#each tableContent as row}
+        {#if row.example == true}
+          <tr>
+            <td>
+              <span class="text-muted">{row.purpose}</span>
+            </td>
+            <td>
+              <span class="text-muted">{row.data}</span>
+            </td>
+            <td>
+              <span class="text-muted">{row.source}</span>
+            </td>
+            <td>
+              <span class="text-muted">{row.visibility}</span>
+            </td>
+          </tr>
+        {:else}
+          <tr>
+            <td>
+              <input
+                type="text"
+                placeholder="Purpose"
+                class="form-control"
+                bind:value={row.purpose}
+              />
+            </td>
+            <td>
+              <input
+                type="text"
+                placeholder="What data"
+                class="form-control"
+                bind:value={row.data}
+              />
+            </td>
+            <td>
+              <input
+                type="text"
+                placeholder="Data source"
+                class="form-control"
+                bind:value={row.source}
+              />
+            </td>
+            <td>
+              <textarea
+                class="form-control"
+                style="min-width: 15rem"
+                bind:value={row.visibility}
+              ></textarea>
+            </td>
+          </tr>
+        {/if}
+      {/each}
     </tbody>
   </table>
 </div>

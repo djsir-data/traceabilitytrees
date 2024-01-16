@@ -1,29 +1,23 @@
 <script>
-  import { tabIndex } from "./stores.js";
+  import { tabIndex, q2 } from "./stores.js";
 
-  $: selected = [];
-  $: wantsNone = [];
-  $: canProceed = selected.length > 0 || wantsNone.length > 0;
-
-  $: invalidateNone(selected);
-  $: invalidateSelected(wantsNone);
-
-  function invalidateNone(t) {
-    if (t.length > 0) {
-      wantsNone = [];
-    }
-  }
-  function invalidateSelected(t) {
-    if (t.length > 0) {
-      selected = [];
-    }
-  }
+  let questions;
+  q2.subscribe((value) => {
+    questions = value;
+  });
 
   function nextTab() {
+    collectResults();
     tabIndex.set(3);
+    document.body.scrollIntoView();
   }
   function previousTab() {
+    collectResults();
     tabIndex.set(1);
+    document.body.scrollIntoView();
+  }
+  function collectResults() {
+    q2.set(questions);
   }
 </script>
 
@@ -71,7 +65,53 @@ Think about how it will:
         <th scope="col">List your requirements</th>
       </tr>
     </thead>
-    <tbody></tbody>
+    <tbody>
+      {#each questions as question}
+        <tr>
+          <td
+            >{@html question.question}
+            <small class="text-muted">{@html question.explanation}</small>
+          </td>
+          <td>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                value="Needed"
+                bind:group={question.needed}
+                name={question.id}
+                id="{question.id}-y"
+              />
+              <label class="form-check-label" for="{question.id}-y">
+                Yes
+              </label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                value="Not needed"
+                name={question.id}
+                id="{question.id}-n"
+                bind:group={question.needed}
+              />
+              <label class="form-check-label" for="{question.id}-n"> No </label>
+            </div>
+          </td>
+          <td>
+            <label class="visually-hidden" for="{question.id}-text"
+              >Requirements</label
+            ><textarea
+              class="form-control"
+              placeholder="Requirements"
+              id="{question.id}-text"
+              style="min-width: 15rem;"
+              bind:value={question.requirements}
+            ></textarea>
+          </td>
+        </tr>
+      {/each}
+    </tbody>
   </table>
 </div>
 <div class="row text-center">

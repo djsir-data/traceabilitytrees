@@ -1,6 +1,6 @@
 <script>
   import refreshPic from "$lib/images/arrows-rotate-solid.svg";
-  import { tabIndex } from "./stores.js";
+  import { tabIndex, resetAll } from "./stores.js";
   import Tab1 from "./Tab1.svelte";
   import Tab2 from "./Tab2.svelte";
   import Tab3 from "./Tab3.svelte";
@@ -47,6 +47,7 @@
   ];
 
   function backToStart() {
+    resetAll();
     tabIndex.set(1);
   }
 </script>
@@ -70,15 +71,18 @@
                 >
               </h5>
             </div>
-            <div class="col" style="max-width: min-content">
+            <div class="col" style="max-width: max-content">
               <button
-                class="btn btn-light float-end"
-                id="refreshTree2"
+                class="btn btn-outline-light float-end"
                 type="button"
                 aria-label="refresh"
-                on:click={backToStart}
+                data-bs-toggle="modal"
+                data-bs-target="#checkReset"
+                href="#checkReset"
               >
-                <img src={refreshPic} alt="refresh" style="height: 1.2rem" />
+                <img src={refreshPic} alt="refresh" style="height: 1.2rem" /><br
+                />
+                Start over
               </button>
             </div>
           </div>
@@ -115,6 +119,38 @@
             {/if}
           {/each}
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal" id="checkReset" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirm reset</h5>
+      </div>
+      <div class="modal-body">
+        <p>
+          Are you sure you want to reset the planning tool? All information
+          entered will be lost.
+        </p>
+        <small class="text-muted">
+          Tip: You can navigate forwards and backwards using the buttons at the
+          bottom of the tool. Answers can be saved as a workbook at the end.
+        </small>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn" data-bs-dismiss="modal">
+          Cancel
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger"
+          data-bs-dismiss="modal"
+          on:click={backToStart}
+        >
+          Reset
+        </button>
       </div>
     </div>
   </div>

@@ -39,6 +39,7 @@
 // 2. Include any default variable overrides here
 $primary: #00573f;
 $secondary: #e3edeb;
+$danger: #dc3545;
 $headings-font-family: VIC-SemiBold;
 $font-family-sans-serif: VIC-Regular;
 $component-active-bg: $primary;
@@ -51,6 +52,7 @@ $component-active-bg: $primary;
 $theme-colors: (
   "primary": $primary,
   "secondary": $secondary,
+  "danger": $danger,
 );
 
 $colors: (

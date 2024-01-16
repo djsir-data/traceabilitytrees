@@ -27,6 +27,7 @@
         q1.set(selected.map((o) => ({ "Reason for traceability": o })));
         tabIndex.set(2);
       }
+      document.body.scrollIntoView();
     }
   }
 </script>

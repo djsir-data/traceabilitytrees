@@ -1,11 +1,41 @@
 <script>
-  import { tabIndex } from "./stores.js";
+  import { tabIndex, q3a, q3b } from "./stores.js";
+
+  let tableInternal = [];
+  let tableSupplier = [];
+  q3a.subscribe((value) => {
+    tableInternal = value;
+  });
+  q3b.subscribe((value) => {
+    tableSupplier = value;
+  });
 
   function nextTab() {
+    collectResults();
     tabIndex.set(4);
+    document.body.scrollIntoView();
   }
   function previousTab() {
+    collectResults();
     tabIndex.set(2);
+    document.body.scrollIntoView();
+  }
+  function addRowTabA() {
+    tableInternal.push({ system: null, notes: null, example: false });
+    tableInternal = tableInternal;
+  }
+  function addRowTabB() {
+    tableSupplier.push({
+      system: null,
+      current: null,
+      notes: null,
+      example: false,
+    });
+    tableSupplier = tableSupplier;
+  }
+  function collectResults() {
+    q3a.set(tableInternal);
+    q3b.set(tableSupplier);
   }
 </script>
 
@@ -49,13 +79,13 @@ version number, etc.
     >
   </div>
   <div class="col" style="max-width: max-content">
-    <button class="btn btn-outline-primary" id="intBusNewRow">
+    <button class="btn btn-outline-primary" on:click={addRowTabA}>
       + Add row
     </button>
   </div>
 </div>
 <div class="table-responsive">
-  <table class="table table-striped" id="intBus">
+  <table class="table table-striped">
     <thead>
       <tr>
         <th scope="col">Current business system</th>
@@ -63,53 +93,40 @@ version number, etc.
       </tr>
     </thead>
     <tbody>
-      <tr class="extras">
-        <td>
-          <span class="text-muted">Eg. Xero accounting package</span>
-        </td>
-        <td>
-          <span class="text-muted"
-            >Needs to dovetail into invoicing/ordering</span
-          >
-        </td>
-      </tr>
-      <tr class="extras">
-        <td>
-          <span class="text-muted">Eg. iPhone or Android</span>
-        </td>
-        <td>
-          <span class="text-muted"
-            >Want to be able to access the system by my phone/tablet</span
-          >
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <input
-            type="text"
-            placeholder="Business system"
-            class="form-control"
-          />
-        </td>
-        <td>
-          <textarea class="form-control" style="min-width: 15rem"></textarea>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <input
-            type="text"
-            placeholder="Business system"
-            class="form-control"
-          />
-        </td>
-        <td>
-          <textarea class="form-control" style="min-width: 15rem"></textarea>
-        </td>
-      </tr>
+      {#each tableInternal as row}
+        {#if row.example == true}
+          <tr>
+            <td>
+              <span class="text-muted">{row.system}</span>
+            </td>
+            <td>
+              <span class="text-muted">{row.notes}</span>
+            </td>
+          </tr>
+        {:else}
+          <tr>
+            <td>
+              <input
+                type="text"
+                placeholder="Business system"
+                class="form-control"
+                bind:value={row.system}
+              />
+            </td>
+            <td>
+              <textarea
+                class="form-control"
+                style="min-width: 15rem"
+                bind:value={row.notes}
+              ></textarea>
+            </td>
+          </tr>
+        {/if}
+      {/each}
     </tbody>
   </table>
 </div>
+
 <hr />
 <div class="row mt-3">
   <div class="col">
@@ -121,7 +138,7 @@ version number, etc.
     and logistics &#62; Retailer
   </div>
   <div class="col" style="max-width: max-content">
-    <button class="btn btn-outline-primary" id="custBusNewRow">
+    <button class="btn btn-outline-primary" on:click={addRowTabB}>
       + Add row
     </button>
   </div>
@@ -136,70 +153,51 @@ version number, etc.
       </tr>
     </thead>
     <tbody>
-      <tr class="extras">
-        <td>
-          <span class="text-muted">E.g Transport company</span>
-        </td>
-        <td>
-          <span class="text-muted">Xero | GS1 barcodes</span>
-        </td>
-        <td>
-          <span class="text-muted">Must connect to GS1 compatible</span>
-        </td>
-      </tr>
-      <tr class="extras">
-        <td>
-          <span class="text-muted">E.g. Retailer</span>
-        </td>
-        <td>
-          <span class="text-muted"
-            >Retail database and point of sale (POS) system</span
-          >
-        </td>
-        <td>
-          <span class="text-muted">Must connect to this system</span>
-        </td>
-      </tr>
-      <tr class="extras">
-        <td>
-          <span class="text-muted">E.g. Food service</span>
-        </td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <input type="text" placeholder="Company" class="form-control" />
-        </td>
-        <td>
-          <input
-            type="text"
-            placeholder="Current business systems"
-            class="form-control"
-          />
-        </td>
-        <td>
-          <textarea class="form-control" style="min-width: 15rem"></textarea>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <input type="text" placeholder="Company" class="form-control" />
-        </td>
-        <td>
-          <input
-            type="text"
-            placeholder="Current business systems"
-            class="form-control"
-          />
-        </td>
-        <td>
-          <textarea class="form-control" style="min-width: 15rem"></textarea>
-        </td>
-      </tr>
+      {#each tableSupplier as row}
+        {#if row.example == true}
+          <tr>
+            <td>
+              <span class="text-muted">{row.system}</span>
+            </td>
+            <td>
+              <span class="text-muted">{row.current}</span>
+            </td>
+            <td>
+              <span class="text-muted">{row.notes}</span>
+            </td>
+          </tr>
+        {:else}
+          <tr>
+            <td>
+              <input
+                type="text"
+                placeholder="Company"
+                class="form-control"
+                bind:value={row.system}
+              />
+            </td>
+            <td>
+              <input
+                type="text"
+                placeholder="Current business systems"
+                class="form-control"
+                bind:value={row.current}
+              />
+            </td>
+            <td>
+              <textarea
+                class="form-control"
+                style="min-width: 15rem"
+                bind:value={row.notes}
+              ></textarea>
+            </td>
+          </tr>
+        {/if}
+      {/each}
     </tbody>
   </table>
 </div>
+
 <div class="row text-center">
   <div class="col">
     <button
