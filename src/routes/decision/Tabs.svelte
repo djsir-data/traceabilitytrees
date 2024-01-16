@@ -44,15 +44,17 @@
               </h5>
             </div>
             <div class="col" style="max-width: min-content">
-              <button
-                class="btn btn-light float-end"
-                id="refreshDecision"
-                type="button"
-                aria-label="refresh"
-                on:click={() => backtab()}
-              >
-                ᐊ Back
-              </button>
+              {#if activeTabValue != 1}
+                <button
+                  class="btn btn-light float-end"
+                  id="refreshDecision"
+                  type="button"
+                  aria-label="back"
+                  on:click={() => backtab()}
+                >
+                  ᐊ Back
+                </button>
+              {/if}
             </div>
           </div>
         </div>

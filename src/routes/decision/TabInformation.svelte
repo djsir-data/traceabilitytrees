@@ -30,7 +30,7 @@
   <p><i>Or</i></p>
   <p>
     For example, if an import country requested information about fertiliser
-    application rates how quickly could you access that information?
+    application rates could you quickly provide that information?
   </p>
   <p><i>Or</i></p>
   <p>
