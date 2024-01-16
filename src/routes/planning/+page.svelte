@@ -59,7 +59,7 @@
 
 <div class="container-fluid">
   <div class="row mt-5">
-    <div class="col align-self-center m-0 p-0">
+    <div class="col align-self-center p-1 m-0 p-0">
       <div class="card mx-auto" style="max-width: 1200px">
         <div class="card-header">
           <div class="row">

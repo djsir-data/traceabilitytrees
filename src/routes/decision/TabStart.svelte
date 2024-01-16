@@ -1,5 +1,6 @@
 <script>
   import { tabIndex } from "./stores.js";
+  import Tooltip from "./Tooltip.svelte";
 
   $: selected = [];
   $: wantsNone = [];
@@ -38,7 +39,7 @@
   <small class="text-muted">Tick all boxes that apply </small>
 </div>
 <div class="card-body">
-  <div class="form-check">
+  <div class="form-check shorty py-2">
     <input
       class="form-check-input"
       type="checkbox"
@@ -46,10 +47,15 @@
       id="checkbox-safety"
       bind:group={selected}
     />
-    <label class="form-check-label" for="checkbox-safety"> Food safety </label>
+    <label class="form-check-label" for="checkbox-safety">
+      Food safety<br />
+      <small class="text-muted">
+        e.g. Keep track of stock location, temperature, prevent food fraud</small
+      >
+    </label>
   </div>
 
-  <div class="form-check">
+  <div class="form-check shorty py-2">
     <input
       class="form-check-input"
       type="checkbox"
@@ -58,10 +64,13 @@
       bind:group={selected}
     />
     <label class="form-check-label" for="checkbox-export">
-      Export market access
+      Export market access<br />
+      <small class="text-muted">
+        e.g. meet international requirements and regulations</small
+      >
     </label>
   </div>
-  <div class="form-check">
+  <div class="form-check shorty py-2">
     <input
       class="form-check-input"
       type="checkbox"
@@ -70,10 +79,11 @@
       bind:group={selected}
     />
     <label class="form-check-label" for="checkbox-biosecurity">
-      Biosecurity
+      Biosecurity<br />
+      <small class="text-muted"> e.g. manage pest and diseases</small>
     </label>
   </div>
-  <div class="form-check">
+  <div class="form-check shorty py-2">
     <input
       class="form-check-input"
       type="checkbox"
@@ -82,10 +92,11 @@
       bind:group={selected}
     />
     <label class="form-check-label" for="checkbox-provenance">
-      Provenance
+      Provenance<br />
+      <small class="text-muted"> e.g. prove product origin</small>
     </label>
   </div>
-  <div class="form-check">
+  <div class="form-check shorty py-2">
     <input
       class="form-check-input"
       type="checkbox"
@@ -94,10 +105,11 @@
       bind:group={selected}
     />
     <label class="form-check-label" for="checkbox-certifications">
-      Certifications
+      Certifications<br />
+      <small class="text-muted"> e.g. organic, sustainability claims</small>
     </label>
   </div>
-  <div class="form-check">
+  <div class="form-check shorty py-2">
     <input
       class="form-check-input"
       type="checkbox"
@@ -106,10 +118,13 @@
       bind:group={selected}
     />
     <label class="form-check-label" for="checkbox-productivity">
-      Productivity
+      Productivity<br />
+      <small class="text-muted">
+        e.g. business efficiencies, digitalisation, streamline processes</small
+      >
     </label>
   </div>
-  <div class="form-check">
+  <div class="form-check py-2">
     <input
       class="form-check-input"
       type="checkbox"
@@ -135,3 +150,9 @@
     <button class="btn btn-primary disabled" style="width: 50%"> Next </button>
   {/if}
 </div>
+
+<style>
+  .shorty {
+    line-height: 0.8;
+  }
+</style>

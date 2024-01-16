@@ -7,6 +7,8 @@
   let lastTabValue = [1];
   let justBackTabbed = false;
 
+  
+
   tabIndex.subscribe((value) => {
     if (justBackTabbed != true) {
       lastTabValue.unshift(activeTabValue);
