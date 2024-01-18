@@ -1,5 +1,11 @@
 <script>
   import "../lib/scss/custom.scss";
+  import { onMount } from "svelte";
+  onMount(async () => {
+    const bootstrap = await import(
+      "../../node_modules/bootstrap/dist/js/bootstrap.js"
+    );
+  });
 </script>
 
 <div class="app">
